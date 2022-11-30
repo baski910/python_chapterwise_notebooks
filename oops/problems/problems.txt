@@ -1,0 +1,41 @@
+Problem 1: Write a class called Product. 
+The class should have fields called name, amount, and price, holding the product's name, 
+the number of items of that product in stock, and the regular price of the product. 
+There should be a method get_price that receives the number of items to be bought and 
+returns a the cost of buying that many items, where the regular price is charged for orders of 
+less than 10 items, a 10% discount is applied for orders of between 10 and 99 items, 
+and a 20% discount is applied for orders of 100 or more items. 
+There should also be a method called make_purchase that receives the number of items to be 
+bought and decreases amount by that much.
+
+Problem 2: Write a class called Password_manager. 
+The class should have a list called old_passwords that holds all of the user's past passwords. 
+The last item of the list is the user's current password. 
+There should be a method called get_password that returns the current password 
+and a method called set_password that sets the user's password. 
+The set_password method should only change the password if the attempted password is different 
+from all the user's past passwords. 
+Finally, create a method called is_correct that receives a string and 
+returns a boolean True or False depending on whether the string is equal to the current password or not.
+
+Problem 3:
+Write a class called Time whose only field is a time in seconds. 
+It should have a method called convert_to_minutes that returns a string of minutes and seconds 
+formatted as in the following example: if seconds is 230, the method should return '5:50'. 
+It should also have a method called convert_to_hours that returns a string of hours, minutes, and seconds 
+formatted analogously to the previous method
+
+Problem 4:
+Write a class called Investment with fields called principal and interest. 
+The constructor should set the values of those fields. There should be a method called value_after 
+that returns the value of the investment after n years. The formula for this is p(1+i)n, 
+where p is the principal, and i is the interest rate. 
+It should also use the special method __str__ so that printing 
+the object will result in something like below:
+Principal - $1000.00, Interest rate - 5.12%
+
+Problem 5:
+Write a class called OpenFile with fields filename. The constructor shouldset the values of those fields.
+There should be a method called getLine that returns one line from the file. There should be a method
+called getFrequency that returns the frequency of word passed as an argument to the method, inside the file.
+
