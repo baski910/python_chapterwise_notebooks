@@ -1,0 +1,51 @@
+Create a new folder named MyApp.
+Inside MyApp, create a subfolder with the name 'mypackage'.
+Create an empty __init__.py file in the mypackage folder.
+
+
+__init__.py
+from .functions import average, power
+from .greet import SayHello
+
+
+greet.py
+def SayHello(name):
+    print("Hello " + name)
+    return
+
+
+functions.py
+def sum(x,y):
+    return x+y
+
+def average(x,y):
+    return (x+y)/2
+
+def power(x,y):
+    return x**y
+
+
+from mypackage import functions
+functions.power(3,2)
+
+
+from setuptools import setup
+setup(name='mypackage',
+version='0.1',
+description='Testing installation of Package',
+url='#',
+author='malhar',
+author_email='mlathkar@gmail.com',
+license='MIT',
+packages=['mypackage'],
+zip_safe=False)
+
+
+
+import mypackage
+mypackage.average(10,20)
+
+mypackage.power(10,2)
+
+
+
