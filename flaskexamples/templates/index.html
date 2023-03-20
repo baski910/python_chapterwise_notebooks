@@ -14,5 +14,10 @@
         <li>{{ obj.name }}</li>
         {% endfor %}
     </ul>
+     <form action="{{ url_for('getParams') }}" method="post">
+        <p><input type="text" name="username"></p>
+        <p><input type="text" name="useremail"></p>
+        <p> <input type="submit" value="submit"></p>
+    </form>
 </body>
 </html>
