@@ -3,7 +3,7 @@ import time
 from flask import Flask, abort, request, jsonify, g, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_httpauth import HTTPBasicAuth
-import jwt
+import jwt # pip install pyjwt
 from werkzeug.security import generate_password_hash, check_password_hash
 
 #Initialize variables
@@ -41,13 +41,13 @@ class User(db.Model):
             
         except:
             return 
-        return User.query.get(data['id'])
+        return User.query.get(data['id'])  # db.session.query(User).get(data['id])
         #return User.query.filter_by(id = data['id']).first()
 
 @auth.verify_password
 def verify_password(username_or_token, password):
-    print(username_or_token)
-    print(password)
+    #print(username_or_token)
+    #print(password)
     # first try token
     user = User.verify_auth_token(username_or_token)
    
