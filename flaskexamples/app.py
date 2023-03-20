@@ -16,8 +16,12 @@ def home():
     return render_template("index.html",names = list_of_names)
     #return "My First Web page from flask"     # /playVideo - http://localhost:5000/playVideo
 
-@app.route('/getParams')
+@app.route('/getParams', methods=['GET','POST'])
 def getParams():
+    if request.method == "POST":
+        username = request.form['username']
+        email = request.form["useremail"]
+        print(username,email)
     return "Another Web page from flask"
 
 if __name__ == '__main__':
