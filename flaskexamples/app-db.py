@@ -36,7 +36,14 @@ def addBook():
 
 @app.route('/getJSON')
 def getjson():
-    return jsonify({'message': 'welcome to flask'})
+    books = Book.query.all()
+    list_of_books = []
+    for book in books:
+        d1 =  {}
+        d1['id'] = book.id
+        d1['booktitle'] = book.booktitle
+        list_of_books.append(d1)
+    return jsonify(list_of_books)
 
 if __name__ == '__main__':
     with app.app_context():
