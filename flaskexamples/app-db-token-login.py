@@ -1,20 +1,28 @@
-import os
+# # install flask
+# pip install flask
+# flask templates are rendered using jinja2 templating module
 import time
-from flask import Flask, abort, request, jsonify, g, url_for
+import jwt
+from flask import Flask, render_template, request, jsonify, redirect, url_for, g
 from flask_sqlalchemy import SQLAlchemy
 from flask_httpauth import HTTPBasicAuth
-import jwt # pip install pyjwt
 from werkzeug.security import generate_password_hash, check_password_hash
 
-#Initialize variables
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'use a random string to construct the hash'
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql+psycopg2://restuser1:password@localhost:5432/flaskrestdb"
+
+app.config['SECRET_KEY']='thisisarandomgeneratedstring'
+app.config['SQLALCHEMY_DATABASE_URI']="postgresql+psycopg2://flaskexampleuser1:password@localhost:5432/flaskexample1"
 
 
-db = SQLAlchemy(app)  
+db = SQLAlchemy(app)
 auth = HTTPBasicAuth()
 
+
+class Book(db.Model):
+    __tablename__ = 'books' # the table will be created with the name as set for the variable __tablename__
+    id = db.Column(db.Integer, primary_key=True)
+    booktitle = db.Column(db.String(50))
+    
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key = True)
@@ -26,12 +34,12 @@ class User(db.Model):
 
     def verify_password(self,password):
         return check_password_hash(self.password_hash, password)
-
+    
     def generate_auth_token(self, expires_in):
         return jwt.encode(
             {'id': self.id,'exp': time.time()+ expires_in},app.config['SECRET_KEY'],algorithm='HS256'
         )
-
+    
     @staticmethod
     def verify_auth_token(token):
         #print(token)
@@ -43,15 +51,13 @@ class User(db.Model):
             return 
         return User.query.get(data['id'])  # db.session.query(User).get(data['id])
         #return User.query.filter_by(id = data['id']).first()
+    
+    
 
 @auth.verify_password
-def verify_password(username_or_token, password):
-    #print(username_or_token)
-    #print(password)
+def verfify_password(username_or_token, password):
     # first try token
     user = User.verify_auth_token(username_or_token)
-   
-    # then check for username and password pair
     if not user:
         user = User.query.filter_by(username = username_or_token).first()
         
@@ -60,7 +66,22 @@ def verify_password(username_or_token, password):
     g.user = user
     return True
 
-@app.route('/api/register', methods=['GET','POST'])
+@app.route('/')                               # / - http://localhost:5000
+def books():
+    books = Book.query.all()
+    return render_template("home.html",books = books)
+    #return "My First Web page from flask"     # /playVideo - http://localhost:5000/playVideo
+
+@app.route('/addBook', methods=['GET','POST'])
+def addBook():
+    if request.method == "POST":
+        title = request.form['booktitle']
+        book = Book(booktitle=title)
+        db.session.add(book)
+        db.session.commit()
+    return redirect(url_for('books'))
+
+@app.route('/register', methods=['GET','POST'])
 def register():
     username = request.json.get('username') 
     password = request.json.get('password')
@@ -76,18 +97,23 @@ def register():
     db.session.commit()
     return (jsonify({'username': user.username}), 201)
 
-
-@app.route('/api/token')
+@app.route('/token')
 @auth.login_required
 def get_token():
     token = g.user.generate_auth_token(600)
     return jsonify({ 'token': token, 'duration': 600 })
 
-
-@app.route('/api/dothis', methods=['GET','POST'])
+@app.route('/getJSON', methods=['GET','POST'])
 @auth.login_required
-def do_this():
-    return jsonify({ 'message':'It is done {}'.format(g.user.username) })
+def getjson():
+    books = Book.query.all()
+    list_of_books = []
+    for book in books:
+        d1 =  {}
+        d1['id'] = book.id
+        d1['booktitle'] = book.booktitle
+        list_of_books.append(d1)
+    return jsonify(list_of_books)
 
 if __name__ == '__main__':
     with app.app_context():
