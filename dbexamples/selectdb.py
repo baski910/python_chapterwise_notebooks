@@ -17,6 +17,6 @@ except Exception as e:
 else:
     records = cur.fetchall() # cur.fetchone()
     for row in records:
-        print(f"ID:row[0],Title:row[1]")
+        print(f"ID:{row[0]},Title:{row[1]}")
 finally:
     conn.close()
