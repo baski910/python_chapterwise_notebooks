@@ -36,7 +36,7 @@ class Book(Base): # by default the table created with class name in lower case
     booktitle = Column(String(50))
 
 ## the above completes class definition for book table
-engine = create_engine("mysql+pymysql://root:admin_12345@localhost:3306/demodb2")
+engine = create_engine("mysql+pymysql://root:**********@localhost:3306/demodb2")
 
 Base.metadata.create_all(engine)
 
