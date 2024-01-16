@@ -35,7 +35,20 @@ session = sessionmaker(bind=engine)
 dbsession = session()
 
 '''
-user = User(name='andrew')
+
+dbsession =session()
+
+g=Group(group_name='developers')
+session.add(g)
+session.commit()
+
+user = User(user_name='bob')
+user.group = g
+dbsession.add(user)
+dbsession.commit()
+
+user = User(user_name='tom')
+user.group = g
 dbsession.add(user)
 dbsession.commit()
 '''
@@ -44,11 +57,12 @@ print(dbsession.query(User).limit(1).all())
 #exists = session.query(User).filter_by(name='rohit').scalar() is not None
 
 #print(exists)
-
-g=Group(name='developer')
+'''
+g=Group(group_name='developer')
 session.add(g)
 session.commit()
 
 u=session.query(User).filter_by(name='andrew').first()
 u.group = g
 session.commit()
+'''
