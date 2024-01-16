@@ -30,20 +30,20 @@ class User(Base):
 
 engine = create_engine('mysql+pymysql://admin:root@123@localhost:3306/demodb_1')
 Base.metadata.create_all(engine)
-Session = sessionmaker(bind=engine)
+session = sessionmaker(bind=engine)
 
-session = Session()
+dbsession = session()
 
 '''
 user = User(name='andrew')
-session.add(user)
-session.commit()
+dbsession.add(user)
+dbsession.commit()
 '''
-print(session.query(User).limit(1).all())
+print(dbsession.query(User).limit(1).all())
 
-exists = session.query(User).filter_by(name='rohit').scalar() is not None
+#exists = session.query(User).filter_by(name='rohit').scalar() is not None
 
-print(exists)
+#print(exists)
 
 g=Group(name='developer')
 session.add(g)
