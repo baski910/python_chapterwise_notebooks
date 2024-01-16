@@ -54,6 +54,12 @@ dbsession.commit()
 '''
 print(dbsession.query(User).limit(1).all())
 
+# fetching related users from group
+groups = dbsession.query(Group).all()
+for group in groups:
+    print(group, group.users) # group.users - returns the relevant records from users table
+
+
 #exists = session.query(User).filter_by(name='rohit').scalar() is not None
 
 #print(exists)
