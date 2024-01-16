@@ -23,7 +23,7 @@ class User(Base):
          self.name = name
 
      def __repr__(self):
-         return '<User({},{}>'.format(self.id,self.name)
+        return f"ID:{self.id},User:{self.user_name},GroupID:{self.group_id}"
 
 
 
