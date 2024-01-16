@@ -39,8 +39,8 @@ dbsession = session()
 dbsession =session()
 
 g=Group(group_name='developers')
-session.add(g)
-session.commit()
+dbsession.add(g)
+dbsession.commit()
 
 user = User(user_name='bob')
 user.group = g
