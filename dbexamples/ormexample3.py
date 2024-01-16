@@ -8,14 +8,14 @@ Base = declarative_base()
 class Group(Base):
      __tablename__ = 'groups'
      id = Column(Integer, primary_key = True)
-     name = Column(String(50))
+     group_name = Column(String(50))
      def __repr__(self):
          return '<Group({},{}>'.format(self.id,self.name)   
 
 class User(Base):
      __tablename__ = 'users'
      id = Column(Integer, primary_key = True)
-     name = Column(String(50))
+     user_name = Column(String(50))
      group_id = Column(Integer,ForeignKey('groups.id'),index=True)
      group = relationship('Group',lazy = False, backref = 'users')
 
