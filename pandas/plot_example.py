@@ -1,7 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from matplotlib.colors import LinearSegmentedColormap
-from matplotlib.lines import Line2D 
+
  
 countries = ['France','Spain','Sweden','Germany','Finland','Poland','Italy',
              'United Kingdom','Romania','Greece','Bulgaria','Hungary',
