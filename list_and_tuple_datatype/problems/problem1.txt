@@ -1,0 +1,9 @@
+1. Write a function that returns True if two arrays, when combined, 
+form a consecutive sequence. A consecutive sequence is a sequence without 
+any gaps in the integers, e.g. 1, 2, 3, 4, 5 is a consecutive sequence, 
+but 1, 2, 4, 5 is not.
+
+2. check if the given string is balance. The string will have only {,},(,),[,} characters
+s1 = "{{[]}(){}}"
+
+3. 
