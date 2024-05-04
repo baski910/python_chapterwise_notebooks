@@ -6,4 +6,11 @@ but 1, 2, 4, 5 is not.
 2. check if the given string is balance. The string will have only {,},(,),[,} characters
 s1 = "{{[]}(){}}"
 
-3. 
+3. Find the highest sum of adjacent numbers in the below list
+list1 = [8,-6,9,3,12,7,4]
+
+4 if a number is perfect if all digits of the number is a factor of the given number
+Find the numbers which are perfect in the range 2,48
+
+4. 
+
