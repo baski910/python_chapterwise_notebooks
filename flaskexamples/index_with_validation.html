@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            border: 2px solid green;
+            margin: 20px auto;
+            width: fit-content;
+            padding: 50px;
+ 
+        }
+        label{
+            display: inline-block;
+            width: 120px;
+            font-weight: bold;
+            font-size: 19px;
+            margin-top: 10px;
+        }
+        input{
+            outline: none;
+        }
+        #sub{
+            text-align: center;
+            margin-top: 20px;
+ 
+        }
+        #butt{
+            background-color: green;
+            outline: none;
+            width: 120px;
+            height: 30px;
+            color: white;
+            border: none;
+            font-size: 20px;
+           
+ 
+        }
+        #butt:hover{
+            background-color: black;
+        }
+        .error{
+            margin-top: 55px;
+            color: red;
+        }
+         </style>
+        <script>
+            function validateForm() {
+                var username = document.getElementById("name").value;
+                var password = document.getElementById("password").value;
+                var usernameError = document.getElementById("name-error");
+                var passwordError = document.getElementById("password-error");
+   
+                // Clear previous error messages
+                usernameError.textContent = "";
+                passwordError.textContent = "";
+   
+                var isValid = true;
+   
+                // Check if the username field is empty
+                if (!username) {
+                    usernameError.textContent = "name cannot be empty";
+                    isValid = false;
+                }
+   
+                // Check if the password field is empty
+                if (!password) {
+                    passwordError.textContent = "Password cannot be empty";
+                    isValid = false;
+                }
+   
+                // Check if the password has at least 8 characters
+                if (password.length < 8) {
+                    passwordError.textContent = "Password must be at least 8 characters long";
+                    isValid = false;
+                }
+   
+                return isValid;
+            }
+        </script>
+</head>
+<body>
+    <form action="/getValues" method="POST" onsubmit="return validateForm()">
+        <label for="">Name:</label>
+        <input type="text" name="name" id="name">
+        <br>
+        <span id="name-error" class="error"></span>
+ 
+        <br>
+        <label for="">Email:</label>
+ 
+         <input type="email" name="email">
+        <br>
+        <br>
+        <label for="">Password:</label>
+ 
+        <input type="password" name="password" id="password" >
+        <br>
+        <span id="password-error" class="error"></span>
+ 
+        <div id="sub">
+            <br>
+        <input type="submit" id="butt"  value="submit">
+    </div>
+    </form>
+</body>
+</html>
