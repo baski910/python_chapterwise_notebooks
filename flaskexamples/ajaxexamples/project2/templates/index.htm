@@ -17,7 +17,16 @@
                     console.log(data[0].username)
                     console.log(data[0].useremail)
                     t = document.getElementById("userdetails")  
-                    //t.innerHTML = ""
+                    t.innerHTML = ""
+                    tbh = document.createElement("thead")
+                    tbh1 = document.createElement("th")
+                    tbh1.innerHTML = "Name"
+                    tbh2 = document.createElement("th")
+                    tbh2.innerHTML = "Email"
+                    tbh.append(tbh1)
+                    tbh.append(tbh2)
+                   
+
                     tbl = document.createElement("tbody")
                     tabrow = document.createElement("tr")
                     tdata1 = document.createElement("td")
@@ -27,6 +36,7 @@
                     tabrow.append(tdata1)
                     tabrow.append(tdata2)
                     tbl.append(tabrow)
+                    t.append(tbh)
                     t.append(tbl)   
                     //t.innerHTML = tabrow
                     //t.innerHTML = "<tr><td>" + data[0].username + "</td><td>"+ data[0].useremail + "</td></tr>"         
@@ -46,10 +56,6 @@
 </select>
 <div>
     <table id="userdetails">
-        <thead>
-            <th>Name</th>
-            <th>Email</th>
-        </thead>
        
     </table>
 </div>
