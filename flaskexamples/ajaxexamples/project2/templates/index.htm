@@ -1,1 +1,57 @@
-# to be updated
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function postVal(){
+            var formdata = new FormData()
+            ele =document.getElementById('userID')
+            formdata.append(ele.name, ele.value)
+            var xhr =new XMLHttpRequest()
+ 
+            xhr.onreadystatechange=function(){
+                if (xhr.readyState==4 && xhr.status==200){
+                    data = JSON.parse(xhr.responseText)
+                    console.log(data[0].username)
+                    console.log(data[0].useremail)
+                    t = document.getElementById("userdetails")  
+                    //t.innerHTML = ""
+                    tbl = document.createElement("tbody")
+                    tabrow = document.createElement("tr")
+                    tdata1 = document.createElement("td")
+                    tdata1.innerHTML=data[0].username
+                    tdata2 = document.createElement("td")
+                    tdata2.innerHTML = data[0].useremail
+                    tabrow.append(tdata1)
+                    tabrow.append(tdata2)
+                    tbl.append(tabrow)
+                    t.append(tbl)   
+                    //t.innerHTML = tabrow
+                    //t.innerHTML = "<tr><td>" + data[0].username + "</td><td>"+ data[0].useremail + "</td></tr>"         
+                    //console.log(xhr.responseText)
+                }
+            }
+            xhr.open("post","/userDetails")
+            xhr.send(formdata)
+        }
+    </script>
+</head>
+<body>
+<select name="userID" id="userID" onchange="postVal()">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+</select>
+<div>
+    <table id="userdetails">
+        <thead>
+            <th>Name</th>
+            <th>Email</th>
+        </thead>
+       
+    </table>
+</div>
+</body>
+</html>
