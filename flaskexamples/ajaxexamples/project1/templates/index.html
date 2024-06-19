@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function postVal(){
+            var formdata = new FormData()
+            id=document.getElementById('userID')
+            formdata.append(id.name,id.value)
+            var xhr =new XMLHttpRequest()
+ 
+            xhr.onreadystatechange=function(){
+                if (xhr.readyState==4 && xhr.status==200){
+                    console.log(xhr.responseText)
+                }
+            }
+            xhr.open("post","/details")
+            xhr.send(formdata)
+        }
+    </script>
+</head>
+<body>
+<select name="userID" id="userID" onchange="postVal()">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+</select>
+</body>
+</html>
