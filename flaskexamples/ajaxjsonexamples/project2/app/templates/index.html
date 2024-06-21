@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function validateForm(){
+            customername = document.getElementById("customername").value
+            customeremail = document.getElementById("customeremail").value
+            if (!customername ){
+                return false
+            }
+            if (!customeremail){
+                return false
+            }
+            return true
+        }
+
+        function  postVal(){
+            //var formdata = new FormData()
+            if (!validateForm()){
+                document.getElementById("errmsg").innerHTML = ""
+                document.getElementById("errmsg").innerHTML = "input field is blank"
+                return false
+            }
+            customername = document.getElementById("customername").value
+            customeremail = document.getElementById("customeremail").value
+            data = JSON.stringify({
+                "customername": customername,
+                "customeremail": customeremail
+            })
+            //formdata.append(u.name, u.value)
+            //formdata.append(e.name, e.value)
+            var xhr = new XMLHttpRequest()
+            
+            xhr.onreadystatechange = function(){
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    resp =  JSON.parse(xhr.responseText)
+                    document.getElementById("errmsg").innerHTML = resp['message']
+                }
+            }
+            xhr.open("post","/addcustomer")
+            xhr.setRequestHeader("Content-Type","application/json")
+            xhr.setRequestHeader("Accept","application/json")
+            xhr.send(data)
+        }
+    </script>
+</head>
+<body>
+    <form action="/addcustomer" method="post">
+        <p>Name: <input type="text" name="customername" id="customername"></p>
+        <p>Email: <input type="text" name="customeremail" id="customeremail"></p>
+        <p> <input type="button" value="submit" onclick="postVal()"> </p>
+    </form>
+    <div id="errmsg">
+
+    </div>
+</body>
+</html>
