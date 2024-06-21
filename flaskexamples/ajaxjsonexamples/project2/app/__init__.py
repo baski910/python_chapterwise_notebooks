@@ -9,6 +9,13 @@ def create_app():
     from .models import Customer
     app = Flask(__name__, instance_path=os.getcwd(),instance_relative_config=True)
     app.config.from_pyfile('config.py')
+    package_dir = os.path.dirname(
+    os.path.abspath(__file__)
+    )
+    static = os.path.join(
+    package_dir, "static"
+    )
+    app.static_folder=static
     db.init_app(app)
     Migrate(app,db)
 
