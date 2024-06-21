@@ -25,6 +25,11 @@ def create_app():
             customeremail = request.json['customeremail']
             if customername=="":
                 return jsonify({"message":"customer name is blank"})
+            if customeremail=="":
+                return jsonify({"message":"customer email is blank"})
+            exists = db.session.query(Customer).filter_by(customeremail=customeremail).scalar() is not None
+            if exists:
+                return jsonify({'message': "user already exists"})
             customer = Customer(customername=customername,customeremail=customeremail)
             db.session.add(customer)
             db.session.commit()
