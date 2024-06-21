@@ -9,6 +9,7 @@ db = SQLAlchemy()
 ma = Marshmallow()
 
 def create_app():
+    from ,models import Book
     app = Flask(__name__,instance_path=os.getcwd(),instance_relative_config=True)
     app.config.from_pyfile('config.py')
     db.init_app(app)
