@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
     <script>
+        /*
         function validateForm(){
             customername = document.getElementById("customername").value
             customeremail = document.getElementById("customeremail").value
@@ -17,14 +18,18 @@
             }
             return true
         }
-
+        */
         function  postVal(){
             //var formdata = new FormData()
+            /*
             if (!validateForm()){
                 document.getElementById("errmsg").innerHTML = ""
                 document.getElementById("errmsg").innerHTML = "input field is blank"
                 return false
             }
+            */
+            document.getElementById("errmsg").innerHTML = ""
+            document.getElementById("successmsg").innerHTML = ""
             customername = document.getElementById("customername").value
             customeremail = document.getElementById("customeremail").value
             data = JSON.stringify({
@@ -37,8 +42,25 @@
             
             xhr.onreadystatechange = function(){
                 if (xhr.readyState == 4 && xhr.status == 200) {
+                    
+                    /* 
+                    if(resp['error'] !=null){
+                    document.getElementById("errmsg").innerHTML = resp['error']['message']}
+                    else{
+                    document.getElementById("sucmsg").innerHTML = resp['msg']
+                    }
+                    */
+
                     resp =  JSON.parse(xhr.responseText)
-                    document.getElementById("errmsg").innerHTML = resp['message']
+                    
+                    //if (Object.keys(resp['error']).lenght != 0){
+                    if((typeof resp['error']) != "undefined"){
+                        document.getElementById("errmsg").innerHTML = resp['error']['message']
+                    }
+                    if ((typeof resp["success"]) != "undefined"){
+                        document.getElementById("successmsg").innerHTML = resp['success']['message']
+                    }
+                    //document.getElementById("errmsg").innerHTML = resp['message']
                 }
             }
             xhr.open("post","/addcustomer")
@@ -55,6 +77,9 @@
         <p> <input type="button" value="submit" onclick="postVal()"> </p>
     </form>
     <div id="errmsg">
+
+    </div>
+    <div id="successmsg">
 
     </div>
 </body>
