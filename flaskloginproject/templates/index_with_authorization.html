@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function  postVal(){
+            username = document.getElementById("username").value
+            password = document.getElementById("password").value
+            data = JSON.stringify({
+                "username": username,
+                "password": password
+            })
+
+            var auth = btoa(username+":"+password)
+            //formdata.append(u.name, u.value)
+            //formdata.append(e.name, e.value)
+            var xhr = new XMLHttpRequest()
+            
+            xhr.onreadystatechange = function(){
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log(xhr.responseText)
+                }
+            }
+            //xhr.open("post","/api/register")
+            xhr.open("get","/api/dothis")
+            xhr.setRequestHeader("Content-Type","application/json")
+            xhr.setRequestHeader("Accept","application/json")
+            xhr.setRequestHeader("Authorization", "Basic " + auth)
+            xhr.send()
+            //xhr.send(data)
+        }
+    </script>
+</head>
+<body>
+    <form action="#" method="">
+        <p>Name: <input type="text" name="username" id="username"></p>
+        <p>Password: <input type="password" name="password" id="password"></p>
+        <p> <input type="button" value="submit" onclick="postVal()"> </p>
+    </form>
+</body>
+</html>
