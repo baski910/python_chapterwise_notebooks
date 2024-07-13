@@ -9,8 +9,7 @@ s1 = "{{[]}(){}}"
 3. Find the highest sum of adjacent numbers in the below list
 list1 = [8,-6,9,3,12,7,4]
 
-4 if a number is perfect if all digits of the number is a factor of the given number
-Find the numbers which are perfect in the range 2,48
+4 given a list of list with each inner list of equal size in sorted order. Find minimum element that is present in all inner list. For example given the list [[2,3,4,6,8],[1,2,4,6,9],[3,4,5,6.7],[2,5,6,8,9]] the answer will be 6
 
-4. 
+
 
