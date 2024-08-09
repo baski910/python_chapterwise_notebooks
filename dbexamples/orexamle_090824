@@ -1,0 +1,29 @@
+from sqlalchemy import create_engine,Column,String,Integer
+from sqlalchemy.orm  import declarative_base, sessionmaker
+from urllib.parse import quote_plus
+
+Base = declarative_base()
+
+class Book(Base): # book
+    __tablename__ = 'books' # table will be created with the value assinged to __tablename__
+    bookid = Column(Integer, primary_key=True)
+    booktitle = Column(String(50))
+
+    def __repr__(self):
+        return f"ID:{self.bookid},Title:{self.booktitle}"
+
+engine = create_engine("mysql+pymysql://root:{}@localhost:3306/demodb_1".format(quote_plus("Password@1")))
+
+Base.metadata.create_all(engine)
+
+session = sessionmaker(bind=engine)
+dbsession = session()
+
+#book = Book(booktitle="programming in perl")
+#dbsession.add(book)
+#dbsession.commit()
+
+records = dbsession.query(Book).all() # select * from books
+
+for record in records:
+    print(record)
