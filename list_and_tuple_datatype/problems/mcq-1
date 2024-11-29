@@ -226,3 +226,115 @@ list2 = list(map(lambda x: x*x,list1))
 print(list2)
 
 a. [0,1,2,3]	b. [0,1,4,9]	c. [1,4,9]	d. [1,2,3] 
+
+21. Predict the output of the following code
+class A:
+    def __init__(self,a,b):
+        self.x = a
+        self.y = b
+    
+    def __eq__(self,other):
+        return (self.x==other.x) and (self.y==other.y)
+        
+p1 = A(10,15)
+p2 = A(12,13)
+
+print(p1==p2)
+
+a. True	b. Error	c. False	d. no output	
+
+22. Predict the output of the following code
+list1 = ['a','b','c']
+
+list2 = list1.copy()
+
+list2[1]=='g'
+
+print(list1)
+
+a. ['a','b','c'] 	b. ['a','g','c']  c. ['a','b','g']	d. ['g','b','c']		
+
+
+23. Predict the output of the following code 
+list1 = ['a',['b','c']]
+
+list2 = list1.copy()
+
+list2[1][0]=='g'
+
+print(list1)
+
+
+a. ['a',['b','c']] 	b. ['a',['g','c']]  c. ['a',['b','g']]	d. ['g',['b','c']]  	
+
+24. Predict the output of the following code
+list1 = [10,20,30]
+
+list1.extend(40)
+
+print(list1)
+
+a. [10,20,30,40]    b. [10,20,30]    c. Error 	d. [10,20,40]  		
+
+25. Prdict the output of the following code
+list1 =['name','age','class']
+list2=['bob',13]
+
+d1 = dict(zip(list1,list2))
+
+print(d1)
+
+a. {'name':'bob','age':13} b. {'name':'bob','age':13,'class':''}  
+c. {'name':'bob','age':13,'class':0}  d. no output
+
+
+26. Predict the output of the following code
+list1 =['name','age','class']
+list2=['bob',13,'eigth']
+
+d1 = {x:y for x,y in zip(list1,list2)}
+
+print(d1)
+a. {'name':'bob','age':13} 
+b. {'name':'bob','age':13,'class':'eigth'}  
+c. {'name':'bob','age':13,'class':0}  
+d. no output
+
+
+
+27. Predict the output of the following code
+def square(x):
+    return x*x
+    
+m = square
+
+print(m(8))
+
+a. some hexadecimal value 	b. error	c. 0	d. 64 
+
+28. Predict the output of the following code. Assume the current date is 2023-09-15
+import datetime
+x = datetime.datetime.now()
+print(x.strftime("%dth %B %Y")
+
+a. 9th Sep 23	b. 9th September 2023	c. 9th September 23	d 9 September 23		
+
+29. Predict the probable output of the following
+import random
+
+v = random.randrange(1,100,10)
+print(v)
+
+a. 90	b. 11	c. 50	d. 25		
+
+30. Predict the output of the following code
+def f(num):
+   for n in range(2,num):
+       if num%n==0:
+           return False
+   return True
+
+for i in range(11,16,2):
+    print(f(i))
+
+a. False,True,False	b. True,False,True	c. True,False,False	d. True,True,False
