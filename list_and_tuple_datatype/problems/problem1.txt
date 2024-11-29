@@ -20,6 +20,17 @@ def checkString(s1):  # "{[]}(){}}"
 
 3. Find the highest sum of adjacent numbers in the below list
 list1 = [8,-6,9,3,12,7,4]
+Sol:
+max_sum = 0
+
+print(max_sum)
+
+for i in range(len(list1) - 1):
+  current_sum = list1[i] + list1[i + 1]
+  if current_sum > max_sum:
+    max_sum = current_sum
+
+print("The highest sum of adjacent numbers is:", max_sum)
 
 4 given a list of list with each inner list of equal size in sorted order. 
 Find minimum element that is present in all inner list. For example given the 
