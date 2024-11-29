@@ -44,7 +44,17 @@ def returnCommon(list1):
     
     print(c)
 
-5. A number is perfect if all the digits of the number are its divisors. Example 144 can be divided by 1,4 and 4 but 142 can only be divided by 2
+5. A number is perfect if all the digits of the number are its divisors.
+Example 144 can be divided by 1,4 and 4 but 142 can only be divided by 2
+def isPerfect(num):
+    temp = num
+    
+    while num:
+        r = num%10
+        if r==0 or temp%r != 0:
+            return False
+        num //= 10  # num = num/10
+    return True
 
 
 
