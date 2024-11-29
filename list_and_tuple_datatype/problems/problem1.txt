@@ -5,6 +5,18 @@ but 1, 2, 4, 5 is not.
 
 2. check if the given string is balance. The string will have only {,},(,),[,} characters
 s1 = "{{[]}(){}}"
+Sol:
+def checkString(s1):  # "{[]}(){}}"
+    s = []
+    d = {'{':'}','(':')','[':']'}
+    for char in s1:
+        if char in d:
+            s.append(char)
+        else:
+            t = s.pop()
+            if char != d[t]:
+                return False
+    return True
 
 3. Find the highest sum of adjacent numbers in the below list
 list1 = [8,-6,9,3,12,7,4]
