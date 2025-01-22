@@ -4,3 +4,17 @@ print(list(data[0].split(',')),data[1])
 s1=dict(zip(list(data[0].split(',')),list(data[1].split(','))))
 s2=dict(zip(list(data[0].split(',')),list(data[2].split(','))))
 s3=dict(zip(list(data[0].split(',')),list(data[3].split(','))))
+
+
+TEXT = s1.split("\n")
+
+d1 = {}
+
+for i, text in enumerate(TEXT):
+
+    t2 = text.split(", ")
+
+    d1[f's{i+1}'] = {'name': t2[0], 'mark': t2[1], 'subject': t2[2]}  
+
+print(d1)
+ 
