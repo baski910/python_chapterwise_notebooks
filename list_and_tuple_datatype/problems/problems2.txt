@@ -1,1 +1,100 @@
+1. Make a function that encrypts a given input with these steps:
 
+Input: "apple"
+
+Step 1: Reverse the input: "elppa"
+
+Step 2: Replace all vowels using the following chart:
+
+a => 0
+e => 1
+i => 2
+o => 2
+u => 3
+
+# "1lpp0"
+Step 3: Add "aca" to the end of the word: "1lpp0aca"
+
+Output: "1lpp0aca"
+
+
+2. A city skyline can be represented as a 2-D list with 1s representing buildings. In the example below, the height of the tallest building is 4 (second-most right column).
+
+[[0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 1, 0],
+[0, 0, 1, 0, 1, 0],
+[0, 1, 1, 1, 1, 0],
+[1, 1, 1, 1, 1, 1]]
+Create a function that takes a skyline (2-D list of 0's and 1's) and returns the height of the tallest skyscraper.
+
+Examples
+tallest_skyscraper([
+  [0, 0, 0, 0],
+  [0, 1, 0, 0],
+  [0, 1, 1, 0],
+  [1, 1, 1, 1]
+]) ➞ 3
+
+tallest_skyscraper([
+  [0, 1, 0, 0],
+  [0, 1, 0, 0],
+  [0, 1, 1, 0],
+  [1, 1, 1, 1]
+]) ➞ 4
+
+tallest_skyscraper([
+  [0, 0, 0, 0],
+  [0, 0, 0, 0],
+  [1, 1, 1, 0],
+  [1, 1, 1, 1]
+]) ➞ 2
+
+
+
+3. Create a function that takes a string txt and censors any word from a given list lst. The text removed must be replaced by the given character char.
+
+Examples
+censor_string("Today is a Wednesday!", ["Today", "a"], "-") ➞ "----- is - Wednesday!"
+
+censor_string("The cow jumped over the moon.", ["cow", "over"], "*"), "The *** jumped **** the moon.")
+
+censor_string("Why did the chicken cross the road?", ["Did", "chicken", "road"], "*") ➞ "Why *** the ******* cross the ****?"
+
+
+
+4. Create a function which takes in an encoded string and returns a dictionary according to the following example:
+
+Examples
+parse_code("John000Doe000123") ➞ {
+  "first_name": "John",
+  "last_name": "Doe",
+  "id": "123"
+}
+
+parse_code("michael0smith004331") ➞ {
+  "first_name": "michael",
+  "last_name": "smith",
+  "id": "4331"
+}
+
+parse_code("Thomas00LEE0000043") ➞ {
+  "first_name": "Thomas",
+  "last_name": "LEE",
+  "id": "43"
+}
+Notes
+The string will always be in the same format: first name, last name and id with zeros between them.
+id numbers will not contain any zeros.
+
+
+5.Given a number, return the difference between the maximum and minimum numbers that can be formed when the digits are rearranged.
+
+Examples
+rearranged_difference(972882) ➞ 760833
+# 988722 - 227889 = 760833
+
+rearranged_difference(3320707) ➞ 7709823
+# 7733200 - 23377 = 7709823
+
+rearranged_difference(90010) ➞ 90981
+# 91000 - 19 = 90981
