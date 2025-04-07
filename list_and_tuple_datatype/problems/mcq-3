@@ -1,0 +1,314 @@
+1. Predict the output of the following code
+i = 0
+while i < 6:
+    if i == 5:
+        break
+    print(i,end=" ")
+    i += 2
+
+a. 1 3 	b. 0 2 4	c. 0 1 2	d. 1 2 3	
+
+2. Predict the output of the following code
+i = 1
+while i < 7:
+    if i == 5:
+        break
+    print(i,end=" ")
+    i += 2
+
+a. 1 3 		b. 1 3 5	c. 1 2		d. 1 2 3   
+
+3. Predict the output of the following code
+list1 = ['a','b','c','d','e','f']
+for i in range(len(list1)):
+    print(list1[i],end="")
+    i += 1
+ 
+a. bdf	b. adf	c. bcd	d. ace		
+
+4. Predict the output of the following code
+def f(x):
+    x = [50,60,70]
+
+m = [10,20,30]
+f(m)
+print(m)
+
+a. [50,60,70]	b. []	c. [10,20,30]	d. [10,20,30,50,60,70]  
+
+5. Predict the output of the following code
+def f(x):
+    x.extend([50,60,70])
+
+m = [10,20,30]
+f(m)
+print(m)
+
+a. [50,60,70]	b. []	c. [10,20,30]	d. [10,20,30,50,60,70]  
+ans: d
+
+6. Predict the output of the following code
+a,b,*c = 10,20,30,40,50
+
+print(c)
+
+a. 10,20,30	b. 30,40,50	c. 20	d. 30		
+
+7. Predict the output of the following code
+def f(*args):
+    print(args)
+    
+f()
+
+a. error	b. no ouput	c. 0	d. ()		
+
+8. Predict the output of the following code
+t1 = (10)
+
+print(type(t1))
+
+a. <class 'tuple'>	b. <class 'str'>	c. <class 'int'> 	d. <class 'list'>		
+
+9. Predict the output of the following code
+t1 = (10,)
+
+print(type(t1))
+
+a. <class 'tuple'>	b. <class 'str'>	c. <class 'int'> 	d. <class 'list'>		
+
+10. Predict the output of the following code
+num = 45
+
+if num > 0:
+    if num % 2 == 0:
+        print("Positive even number")
+    else:
+        print("Positive odd number")
+elif num == 0:
+    print("Zero")
+else:
+    print("Negative number")
+
+a. Positive even number b. Positive odd number c. Zero d. Negative number 	
+
+
+11. Predict the output of the following code
+
+num = 0
+
+while num < 6:
+    num +=2
+    if num%2==0:
+        continue
+    print(num)
+else:
+   print(-1)
+   
+a.0	b.2	c. 4	d. -1		
+
+12. Predict the output of the following code
+num = 0
+
+while num < 6:
+    num += 2
+    if num%2==0:
+        continue
+    print(num)
+
+print(num)
+
+a. 0	b. 6	c. 2	d. 4		
+
+
+13. Predict the output of the following code
+num = 1
+
+while num < 7:
+    num += 2
+    if num%2==1:
+        continue
+    print(num)
+else:
+    print(0)
+
+a. 0 	b.1	c.7	d. 5		
+
+14. Predict the output of the following code
+num = 1
+
+while num < 7:
+    num += 2
+    if num%2==1:
+        continue
+    print(num)
+
+print(num)
+    
+a. 0 	b.1	c.7	d. 5		
+
+15. Predict the output of the following code
+num = 0
+
+while num < 5:
+    num += 2
+    if num%2==1:
+        continue
+    print(num,end=" ")
+    
+a. 2 4 6	b. 1 2 3	c. 0 2 4	d. 1 3 5   
+
+16. Predict the output of the following code
+def f(n):
+    if n%2==0:
+        return True
+    else:
+        return False
+
+for i in range(1,6,2):
+	print(f(i),end=" ")
+
+a. True True True	b. True False False	c. False False False d. False True False		
+
+
+17. Predict the output of the following code
+def f(n):
+    if n%6==0:
+        return True
+    else:
+        return False
+
+for i in range(1,20,5):
+	if i%2==0:
+	    continue
+	print(f(i),end=" ")
+
+
+a. False False	b. True True	c. True False	d. False True	
+
+18. Predict the output of the following code
+def f(n):
+    if n%3==0:
+        return True
+    else:
+        return False
+
+for i in range(1,10,2):
+	if i%3==0:
+	    continue
+	print(f(i),end=" ")
+	
+a. False False True	b. True True False	c. False False False 	d. False True False		
+
+19. Predict the output of the following code
+def f(n):
+    if n%7==0:
+        return True
+    else:
+        return False
+
+for i in range(1,6,2):
+	if i%3==0:
+	    continue
+	print(f(i),end=" ")
+
+a. False False True	b. True True False	c. False False False 	d. False True False		
+
+20. Predict the output of the following code
+for i in range(1,6,2):
+    if i%3==0:
+        continue
+    print(i,end=" ")
+else:
+    print(3,end=" ")
+    
+a. 1 2 3	b. 1 5 3	c. 1 3 3	d. 1 4 3  
+
+21. Predict the output of the following code
+for i in range(1,11,4):
+    if i%3==0:
+        continue
+    print(i,end=" ")
+else:
+    print(3,end=" ")
+    
+a. 1 5 3	b. 1 3 3	c. 1 4 3	d. 1 5 3 
+
+22. Predict the possible output of the following code
+def y(n):
+    import random
+    num = random.randrange(5,n,10)
+    return num
+    
+v = y(20)
+print(v)
+
+a. 20	b.10	c. 15	d. 0 	
+
+23. Predict the output of the following code
+def f(x):
+    w = x.split('@')
+    return w[0]
+
+v = f('abc@example.com')
+print(v)
+
+a. abc	b. example	c. com	d. @	
+
+24. Predict the output of the following code
+list1 = [10,20,30,20]
+list1.remove(20)
+print(list1)
+
+a. [10,20,30]	b. [10,30]	c. [10,30,20] d. [10,20,30,20] 
+
+25. Predict the output of the following code
+list1 = [10,20,30,20]
+list1.pop(20)
+print(list1)
+
+a. Error	b. [10,20,30]	c. [10,30,20]	d. [10,30] 
+
+26. Predict the output of the following code
+def y(s):
+    w = s.split("-")
+    return w[-1]
+    
+v = y("10-02-2024")
+print(v)
+
+a. 10	b. 02	c. 2024	d. 2	
+
+27. Predict the output of the following. Assume the file exists with sufficient content 
+fh = open("myfile.txt","rb")
+fh.seek(10,1)
+print(fh.tell())
+fh.close()
+
+a. 0	b. -1	c. 15	d. 10	ans: d
+
+28. Predict the output of the following code
+list1 = [x for x in range(1,15,5)]
+v = list(map(lambda x: x%6==0, list1))
+print(v)
+
+a. [1,6,12]	b. [False,True,False] c. [6]	d. []	
+
+
+29. Predict the output of the following code
+names = ['bob','sam','peter']
+print(names[-1][1])
+
+a. o	b. a	c. t	d. e	
+
+
+30. Predict the output of the following code
+list1 = [x for x in range(1,15,5)]
+v = list(filter(lambda x: x%6==0, list1))
+print(v)
+
+a. [1,6,12]	b. [False,True,False] c. [6]	d. []	
+
+31. Predict the output of the following code
+list1 = [x for x in range(1,15,6)]
+v = list(filter(lambda x: x%7==0, list1))
+print(v)
