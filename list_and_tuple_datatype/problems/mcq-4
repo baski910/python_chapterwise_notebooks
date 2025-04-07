@@ -1,0 +1,317 @@
+1. Predict the output of the following code
+s1 = "helloworld"
+vowels = ['a','e','i','o','u']
+w = [x for x in s1 if x in vowels]
+n = w.count('o')
+print(n)
+
+a. 1	b.3	c.0	d. 2		
+
+2. Predict the output of the following code
+numbers = [x for x in range(50)]
+output = list(filter(lambda x: x%23==0,numbers))
+t = sum(output)
+print((t+1)//2)
+
+a. 0	b. 35	c. 34	d. 70		
+
+
+3. Predict the output of the following code
+numbers = [x for x in range(75)]
+output = list(filter(lambda x: x%21==0,numbers))
+t = max(output)
+print((t+2)//5)
+
+a. 12	b. 15	c. 13	d. 11		
+
+4. Predict the output of the following code
+names= ['bob','tom','pat']
+w = list(map(lambda x: x[-1],names))
+s = ''.join(w)
+print(s)
+
+a. btp	b. ''	c. bmt	d. ooa 		
+
+5. Predict the output of the following code
+def f(x):
+    import re
+    p= re.compile(r'(\b[A-Z][a-z]+\s[A-Z][a-z]\b)')
+    o = p.search(text)
+    return o.group(1)
+text="the email of Bob Smith is bobsmith@example.com"
+v = f(text)
+print(v)
+
+a. Bob Smith	b. Bob	c. Smith	d. bobsmith	
+
+6. Predict the output of the following code
+def f():
+    import random
+    num = random.randrange(1,10,6)
+    return num
+
+v = f()
+print(v)
+
+a. 0	b. 1 or 7	c. 6	d. 10	
+
+7. Predict the output of the following code
+def y(x):
+    s1 ={5,6}
+    s1.add(x)
+    print(s1)
+    
+y(6)
+
+a. {5,6,6}	b. {5}	c. {6}	d. {5,6}	
+
+8. Predict the output of the following code
+s1 = {4,5,}
+s2 = {3,4}
+s = s1.intersection(s2)
+print(s)
+
+a. {2,3,5,6}	b. {4}	c. {5,6}	d. {2,3}	
+
+9. Predict the output of the following code (ignore order of occurances)
+s1 = {4,5,}
+s2 = {3,4}
+s = s1.symmetric_difference(s2)
+print(s)
+
+a. {4,3,5}	b. {3,5}	c. {5}		d. {3}	
+
+10. Predict the output of the following code
+s = "a"
+print(s.center(5,"#"))
+
+a. Error	b. #a#	c. #####	d. ##a##	
+
+11. Predict the output of the following code
+fruits =  ["apple","banana","kiwi"]
+
+w = list(filter(lambda x: 'a' in x,fruits))
+print(w)
+
+a. ["apple"]	b. ["apple","banana"]	c. []	d. ["kiwi"] 
+
+12. Predict the output of the following code
+fruits =  ["apple","banana","kiwi"]
+
+w = [x for x in fruits if x.find('i')>0 ]
+print(w)
+
+a. ["apple","banana","kiwi"] 	b. ["apple","banana"]	c. ["kiwi"] 	d. [] 
+
+13. Predict the output of the following code
+def y(s,c):
+    pos = 0
+    try:
+        pos = s.index(c)
+    except:
+        pos = -1
+    return pos
+    
+s = "helloworld"
+c = "a"
+num = y(s,c)
+print(num)
+
+a. 0	b. 5	c. 10	d. -1	ans: d
+
+14. Predict the output of the following code
+def y(l):
+    total = 0
+    for e in l:
+        total *= e
+    return total
+
+list1 = [x for x in range(1,6)]
+v = y(list1)
+print(v)
+
+a. 240	b.120	c. 1	d. 720		ans: b
+
+15. Predict the output of the following code
+def y(x):
+    import re
+    s = re.search(r'e$',x)
+    if s:
+       return True
+    return False
+
+w = y('apple')
+print(w)
+
+a. True	b. False	c. Error	d. no output ans: a
+
+16. Predict the output of the following code
+x = 5
+y = 2
+z = 10
+
+result = z / x * y+z
+
+print(result)
+
+a. 10.0		b. 12.0		c. 14.0		d.2.0	
+
+
+17. Predict the output of the following code
+x = 5
+y = 2
+z = 10
+
+result = z / x * (y+z)
+
+print(result)
+
+
+a. 24.0		b. 12.0		c. 14.0		d.2.0  
+
+18. Predict the output of the following code
+def y(x):
+    s = x[1:2]
+    s = s.__add__('s')
+    return s
+
+v = y('bob')
+print(v)
+
+a. ss	b. s	c. o	d. os		
+
+19. Predict the output of the following code
+def y(x):
+    s = x[-1][1]
+    return s
+
+v = y(['bob','alice','sam'])
+print(v)
+
+a. o	b. a	c. l	d. b	
+
+
+20. Predict the output of the following code
+class P:
+   def __init__(self,x):
+       self.x = x
+   def __repr__(self):
+       return f"{self.x}"
+   def __eq__(self,other):
+       return self.x == other.x
+   def __lt__(self,other):
+       if self.x < other.x:
+           return True
+       else:
+           return False
+
+list1 =[ P(12),P(8),P(10) ]
+list1.sort()
+print(list1)
+
+a. [10 12 8]	b. [12 8 10]	c.[8 10 12]	d. [12 10 8] 
+
+21. Predict the output. Assume 'somefile' exists  
+fh = open('somefile','rb')
+fh.seek(5,1)
+fh.read(15)
+print(fh.tell())
+fh.close()
+
+a.5 b. 5 characters from 5th byte  c.20 d. Error   
+
+22. Predict the output of the following
+import re
+s1 = "mumbai9999999999$@$!!"
+
+sobj = re.search(r'[a-zA-Z]+(\d+)(.*)',s1)
+
+print(sobj.group(2))
+
+a. 9	b. 9999999999 c. $@$!!	d. mumbai	
+
+23. Predict the output of the following code
+def f(s1):
+    import re
+    sb = re.search(r".*\.(.*)\.(.*)",s1)
+    return sb.group(2)
+
+s1='www.mydomain.com'
+v = f(s1)
+print(v)
+a. www	b. com	c. www.mydomain.com	d. mydomain	
+
+24. Predict the output of the following.
+def f(x): 
+    import re
+    sb = re.sub(r"(\w+)(\s)(\w+)",r"\1\3",s1)
+    return sb
+s1="this this"
+v = f(s1)
+print(v)
+a. this this	b. this 	c. no output	d. thisthis 
+
+
+25. Predict the output of the following
+def f(n):
+   if n==0:
+      return 1
+   else:
+      f(n-1)
+      print(n,end="\t")
+
+f(5)
+
+a. 1 2 3 4 5  b. 5  c. 5 4 3 2 1  d. 1		
+
+26. Predict the output of the following
+list1 = [10,20,30]
+list2 = list1.copy()
+list2.clear()
+print(list1)
+
+a. []	b. [10,20,30] c. 10,20,30 d. 10		
+
+27. Predict the output of the following
+Assume the 'myfile1.txt' does not exist in the path
+try:
+   fh = open('myfile1.txt','w')
+except:
+   print("file opening failed")
+else:
+   print("file opening succeeded")
+   
+a. file opening failed  b. no output  c. file opening succeeded d. file not found				
+
+
+28. Predict the output of the following
+Assume the 'myfile.txt' does not exist in the path
+try:
+   fh = open('myfile.txt','w')
+except:
+   print(fh.read())
+else:
+   print(fh.read())
+   
+a. Error  b. no output  c. abcdef d. file not found 
+
+29. Predict the number of lines in the output of the following
+import logging
+logging.basicConfig(level=logging.WARNING)
+
+logger = logging.getLogger()
+
+logger.info("log info")
+logger.warning("log info")
+logger.critical("log info")
+
+a. 3 	b. 2 	c.1 	d. 0		
+
+
+30. Predict which line will be displayed. Assume the file exists with minimum of 20 lines
+fh = open("myfile.txt","r")
+fh.seek(5,1)
+print(fh.tell())
+fh.close()
+
+a. 5  b. 0  c. Error   d. No output  
