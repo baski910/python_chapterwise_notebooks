@@ -1,0 +1,101 @@
+1. Create a function to perform basic arithmetic operations that includes addition, subtraction, multiplication and division on a string number (e.g. "12 + 24" or "23 - 21" or "12 // 12" or "12 * 21").
+
+Here, we have 1 followed by a space, operator followed by another space and 2. For the challenge, we are going to have only two numbers between 1 valid operator. The return value should be a number.
+
+eval() is not allowed. In case of division, whenever the second number equals "0" return -1.
+
+For example:
+
+"15 // 0"  ➞ -1
+Examples
+arithmetic_operation("12 + 12") ➞ 24 // 12 + 12 = 24
+
+arithmetic_operation("12 - 12") ➞ 24 // 12 - 12 = 0
+
+arithmetic_operation("12 * 12") ➞ 144 // 12 * 12 = 144
+
+arithmetic_operation("12 // 0") ➞ -1 // 12 / 0 = -1
+
+
+
+2. You are given three inputs: a string, one letter, and a second letter.
+
+Write a function that returns True if every instance of the first letter occurs before every instance of the second letter.
+
+Examples
+first_before_second("a rabbit jumps joyfully", "a", "j") ➞ True
+# Every instance of "a" occurs before every instance of "j".
+
+first_before_second("knaves knew about waterfalls", "k", "w") ➞  True
+
+first_before_second("happy birthday", "a", "y") ➞ False
+# The "a" in "birthday" occurs after the "y" in "happy".
+
+first_before_second("precarious kangaroos", "k", "a") ➞ False
+
+
+3. A fulcrum of a list is an integer such that all elements to the left of it and all elements to the right of it sum to the same value. Write a function that finds the fulcrum of a list.
+
+To illustrate:
+
+find_fulcrum([3, 1, 5, 2, 4, 6, -1]) ➞ 2
+// Since [3, 1, 5] and [4, 6, -1] both sum to 9
+
+find_fulcrum([1, 2, 4, 9, 10, -10, -9, 3]) ➞ 4
+
+find_fulcrum([9, 1, 9]) ➞ 1
+
+find_fulcrum([7, -1, 0, -1, 1, 1, 2, 3]) ➞ 0
+
+find_fulcrum([8, 8, 8, 8]) ➞ -1
+
+
+
+4. Given a positive number x:
+
+p = (p1, p2, …)
+# Set of *prime* factors of x
+If the square of every item in p is also a factor of x, then x is said to be a powerful number.
+
+Create a function that takes a number and returns True if it's powerful, False if it's not.
+
+Examples
+is_powerful(36) ➞ True
+# p = (2, 3) (prime factors of 36)
+# 2^2 = 4 (factor of 36)
+# 3^2 = 9 (factor of 36)
+
+is_powerful(27) ➞ True
+
+is_powerful(674) ➞ False
+
+
+5. Given an integer, create a function that returns the next prime. If the number is prime, return the number itself.
+
+Examples
+next_prime(12) ➞ 13
+
+next_prime(24) ➞ 29
+
+next_prime(11) ➞ 11
+# 11 is a prime, so we return the number itself.
+
+
+6. Create a function that takes a string containing integers as well as other characters and return the sum of the negative integers only.
+
+Examples
+negative_sum("-12 13%14&-11") ➞ -23
+# -12 + -11 = -23
+
+negative_sum("22 13%14&-11-22 13 12") ➞ -33
+# -11 + -22 = -33
+
+
+7. Create a function that takes a list and returns a new list containing only prime numbers.
+
+Examples
+filter_primes([7, 9, 3, 9, 10, 11, 27]) ➞ [7, 3, 11]
+
+filter_primes([10007, 1009, 1007, 27, 147, 77, 1001, 70]) ➞ [10007, 1009]
+
+filter_primes([1009, 10, 10, 10, 3, 33, 9, 4, 1, 61, 63, 69, 1087, 1091, 1093, 1097]) ➞ [1009, 3, 61, 1087, 1091, 1093, 1097]
