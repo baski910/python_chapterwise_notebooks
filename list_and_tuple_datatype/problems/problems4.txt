@@ -1,0 +1,54 @@
+1. Given the month and year as numbers, return whether that month contains a Friday 13th.
+
+Examples
+has_friday_13(3, 2020) ➞ True
+
+has_friday_13(10, 2017) ➞ True
+
+has_friday_13(1, 1985) ➞ False
+
+
+2. Given a name, return the letter with the highest index in alphabetical order, with its corresponding index, in the form of a string. You are prohibited to use max() nor is reassigning a value to the alphabet list allowed.
+
+Examples
+alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+
+alphabet_index(alphabet, "Flavio") ➞ "22v"
+
+alphabet_index(alphabet, "Andrey") ➞ "25y"
+
+alphabet_index(alphabet, "Oscar") ➞ "19s"
+
+
+3. Create a function that takes a list and string. The function should remove the letters in the string from the list, and return the list.
+
+Examples
+remove_letters(["s", "t", "r", "i", "n", "g", "w"], "string") ➞ ["w"]
+
+remove_letters(["b", "b", "l", "l", "g", "n", "o", "a", "w"], "balloon") ➞ ["b", "g", "w"]
+
+remove_letters(["d", "b", "t", "e", "a", "i"], "edabit") ➞ []
+
+
+4. Given a string, reverse its order, change lowercase letters to uppercase and increment uppercase letters by one (e.g. A becomes B, C becomes D, Z becomes A).
+
+Examples
+change_string("ApPle") ➞ "ELQPB"
+
+change_string("draGON") ➞ "OPHARD"
+
+change_string("ZebrA") ➞ "BRBEA"
+
+
+
+5. Given a list of numbers, create a function that removes 25% from every number in the list except the smallest number, and adds the total amount removed to the smallest number.
+
+Examples
+add_to_smallest([4, 1, 4]) ➞ [3, 3, 3]
+
+add_to_smallest([16, 10, 8]) ➞ [12, 7.5, 14.5]
+
+add_to_smallest([2, 100]) ➞ [27, 75]
+Notes
+There will only be one smallest number in a given list.
