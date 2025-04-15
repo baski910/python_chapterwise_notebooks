@@ -1,0 +1,102 @@
+1. RGB is a color model that defines color by the combination of Red, Green, and Blue. An RGB tuple is composed of three numbers that specify the intensity of each color. Because it uses 8 bits (0s or 1s) for each color, each intensity can be transformed into a hexadecimal number with two digits at most.
+
+There are 256 possible shades for each color, since "11111111" (or hex "ff") corresponds to decimal 255, plus the number 000. The combination of all 256 possible shades for the three primary colors gives 256 cubed, or over 16 million possible colors.
+
+Write a function that takes a color in RGB or hex and returns the opposite. If it takes in the three integers in an RGB tuple, it should return a string with the equivalent hexadecimal notation, plus a hash sign (#) at the front. If it takes in a string in hex, it should return a tuple with the three integers corresponding to RGB.
+
+Examples
+rgb_or_hex(150, 50, 76) ➞ "#96324c"
+# 150 is hex 96, 50 is hex 32 and 76 is hex 4c.
+
+rgb_or_hex("#303749") ➞ (48, 55, 73)
+# 30 is dec 48, 37 is dec 55 and 49 is dec 73.
+
+rgb_or_hex(170, 14, 0) ➞ "#aa0e00"
+# 170 is hex aa, 14 is hex e and 0 is hex 0.
+Notes
+Remember that all three colors should be two-digit hex numbers, so for Green value 14, the hex value should be 0e rather than just e.
+Try using formatting or filling methods to minimize if statements.
+
+
+2. Given a series of lists, with each individual list containing the time of the alarm set and the sleep duration, return what time to sleep.
+
+Examples
+bed_time(["07:50", "07:50"]) ➞ ["00:00"]
+# The second argument means 7 hours, 50 minutes sleep duration.
+
+bed_time(["06:15", "10:00"], ["08:00", "10:00"], ["09:30", "10:00"]) ➞ ["20:15", "22:00", "23:30"]
+# The second argument of each sub list means 10 hours sleep duration.
+
+bed_time(["05:45", "04:00"], ["07:10", "04:30"]) ➞ ["01:45", "02:40"]
+# Sleep duration can be different among the lists.
+
+
+3. Write a function that returns the largest even integer in a list with its corresponding index and the parity of that index, but determining the parity of that index is limited to not using the modulo operator %.
+
+Output Structure:
+You have to return a Dictionary.
+
+{"@odd|even index " + index_of_largest: largest_integer}
+
+bitwise_index([107, 19, 36, -18, -78, 24, 97]) ➞ {"@even index 2": 36}
+
+bitwise_index([31, 7, 2, 13, 7, 9, 10, 13]) ➞ {"@even index 6": 10}
+
+bitwise_index([4, 4, 4, 4, 4, 4]) ➞ {"@even index 0": 4}
+
+bitwise_index([-31, -7, -13, -7, -9, -13]) ➞ "No even integer found!"
+
+
+The use of index() and max() are restricted.
+If there are no even integers, return "No even integer found!".
+
+
+
+4. You are given two positive integers n and m. You have to perform some basic mathematical operations on n to obtain m. These are your options:
+
+(n-1)/2   - if (n-1) is divisible by 2
+n/2       - if n is divisible by 2
+n*2
+Create a function that returns the minimum number of steps required to transform n into m.
+
+Examples
+number_transform(2, 8) ➞ 2
+// 2 * 2 = 4
+// 4 * 2 = 8
+
+number_transform(9, 2) ➞ 2
+// (9-1) / 2 = 4
+// 4 / 2 = 2
+
+number_transform(1024, 1024) ➞ 0
+Notes
+m will always be a power of 2.
+
+
+5. Create a function that takes a string and returns the reversed string. However there's a few rules to follow in order to make the challenge interesting:
+
+The UPPERCASE/lowercase positions must be kept in the same order as the original string (see example #1 and #2).
+Spaces must be kept in the same order as the original string (see example #3).
+Examples
+special_reverse_string("Edabit") ➞ "Tibade"
+
+special_reverse_string("UPPER lower") ➞ "REWOL reppu"
+
+special_reverse_string("1 23 456") ➞ "6 54 321"
+
+
+6. Starting with either 3 or 5 and given these operations:
+
+add 5
+multiply by 3
+You should say if it is possible to reach the target number n.
+
+Examples
+only_5_and_3(14) ➞ True
+# 14 = 3*3 + 5
+
+only_5_and_3(25) ➞ True
+# 25 = 5+5+5+5+5
+
+only_5_and_3(7) ➞ False
+# There exists no path to the target number 7
