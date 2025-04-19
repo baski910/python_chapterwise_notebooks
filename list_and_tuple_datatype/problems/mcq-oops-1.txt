@@ -1,0 +1,151 @@
+1. 2. class A:
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+    def __eq__(self,other):
+        return self.x==other.x and self.y==other.y
+
+a1 = A(10,15)
+a2 = A(20,18)
+print(a1==a2)
+
+a. True    b.False   c. Error   d. no output
+
+
+2. class A:
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+    def __lt__(self,other):
+        if self.y<other.y and self.x<other.x:
+            return True
+        else:
+            return False
+
+a1 = A(10,15)
+a2 = A(20,18)
+print(a1<a2)
+
+a. Error    b. False    c. True     d. no output
+
+
+3. class F:
+   def __call__(self,maxlimit):
+        for v in range(maxlimit):
+            yield v
+f = F()
+nums = [x for x in f(2)]
+print(nums)
+
+#a. [0,0]  b.[1,1]    c.[0,1]    d.[1,0]
+
+
+4. class A:
+    def __init__(self,x=5):
+        self.x = x
+    def __str__(self):
+        return f"{self.x}"
+a = A(10)
+print(a)
+
+
+5. class B:
+    def __init__(self,m):
+        self.m = m
+    @property
+    def m(self):
+        return self.__m
+    @m.setter
+    def m(self,val):
+        if val>100:
+            self.__m = 100
+        elif val<0:
+            self.__m = 0
+        else:
+            self.__m = val
+
+b = B(150)
+print(b.m)
+
+
+6. class A:
+    def f(self):
+        print("hi")
+class B(A):
+    def f(self):
+        print("hello")
+
+a = B()
+a.f()
+
+#a. hi  b. hi hwllo  c. hello hi  d. hello
+
+
+7. class A:
+    def f(self):
+        print("hi")
+A.f()
+
+#a.SyntaxError    b.TypeError   c.Hi  d. KeyError
+
+
+8. class B:
+    def f():
+        print("hi")
+b = B()
+b.f()
+
+#a. TypeError   b. SyntaxError   c. KeyError  d. Hi
+
+
+10. class B:
+    def __del__(self):
+        print("hi")
+b=B()
+del b
+
+# a. TypeError b. hi  c. SyntaxError d.KeyError
+
+
+11. class A:
+    pass
+class B(A):
+    pass
+
+print(issubclass(B,A))
+
+
+12. class A:
+    def f(self):
+        print("hello")
+class B(A):
+    def f(self):
+        super()
+b = B()
+b.f()
+
+# a. hello  b. error   c. no output d. hexadecimal value
+
+
+14. class B:
+    pass
+print(B.__mro__)
+
+# a. (<class '__main__.B'>,)
+# b. (<class 'Object'>,)
+# Error
+# (<class '__main__.B'>, <class 'object'>)
+
+
+15. class N:
+    def __next__(self):
+        self.m = 0
+        while self.m<3:
+            self.m += 1
+            yield self.m
+
+for i in next(N()):
+    print(i,end="")
+
+# a. 12   b. 123   c.012   d. 01
+
