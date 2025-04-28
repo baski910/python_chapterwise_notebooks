@@ -3,7 +3,7 @@ import re
 import shutil
 import requests
 from bs4 import BeautifulSoup as soup
-
+# https://infatica.io/blog/web-crawling-vs-web-scraping/
 def get_source(link):
     r = requests.get(link)
     if r.status_code == 200:
