@@ -15,6 +15,11 @@ df1 = spark.read.csv('phone_data.csv',header=True,schema=schema)
 #df1.show()
 df1.printSchema()
 
+df2 = df1.where("item=='call'")
+df2.show()
+
+
+
 
 #filtering
 df1 = df1.filter(df1['item']=='call')
