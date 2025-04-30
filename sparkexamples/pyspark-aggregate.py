@@ -14,3 +14,12 @@ schema = StructType([
 df1 = spark.read.csv('phone_data.csv',header=True,schema=schema)
 #df1.show()
 df1.printSchema()
+
+
+#df2 = df1.filter(df1['item']=='call').agg(sum("duration"))
+#df3 = df2.agg(sum("duration")).collect()
+#df3.show()
+#df2 = df1.groupby('item').agg(sum('duration'))
+#df2.show()
+df2 = df1.where("item=='call'")
+df2.show()
