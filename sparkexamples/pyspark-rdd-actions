@@ -1,1 +1,43 @@
+from pyspark.sql import SparkSession
 
+
+# Aggregate the elements of each partition, and then the results for all the partitions, 
+# using a given combine functions “combOp” and a neutral “zero value.”
+
+spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
+data=[("Z", 1),("A", 20),("B", 30),("C", 40),("B", 30),("B", 60)]
+inputRDD = spark.sparkContext.parallelize(data)
+  
+listRdd = spark.sparkContext.parallelize([1,2,3,4,5,3,2])
+
+seqOp = (lambda x, y: x + y)
+combOp = (lambda x, y: x + y)
+agg=listRdd.aggregate(0, seqOp, combOp)
+print(agg)
+
+# fold() – Aggregate the elements of each partition, 
+# and then the results for all the partitions.
+
+from operator import add
+foldRes=listRdd.fold(0, add)
+print(foldRes)
+
+# collect() -Return the complete dataset as an Array.
+data = listRdd.collect()
+print(data)
+
+
+# count()  - Return the count of elements in the dataset.
+
+# countApprox()  - Return approximate count of elements in the dataset, 
+# this method returns incomplete when execution time meets timeout.
+
+# countApproxDistinct() – Return an approximate number of distinct elements in the dataset.
+
+print("Count : "+str(listRdd.count()))
+#Output: Count : 20
+print("countApprox : "+str(listRdd.countApprox(1200)))
+#Output: countApprox : (final: [7.000, 7.000])
+print("countApproxDistinct : "+str(listRdd.countApproxDistinct()))
+#Output: countApproxDistinct : 5
+print("countApproxDistinct : "+str(inputRDD.countApproxDistinct()))
