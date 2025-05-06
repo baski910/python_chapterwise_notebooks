@@ -132,13 +132,36 @@ async def crawl():
 
   return pages
 
+async def scrape(link):
+  content = await fetch(link)
+  soup = BeautifulSoup(content, 'html.parser')
+
+  # Select name
+  name = soup.select_one('caption.infobox-title')
+
+  if name is not None:
+    name = name.text
+
+    creator = soup.select_one('table.infobox tr:has(th a:-soup-contains("Developer", "Designed by")) td')
+    if creator is not None:
+      creator = creator.text
+
+    return [name, creator]
+
+  return []
+
 
 async def main():
   links = await crawl()
+  tasks = []
+  for link in links[:6]:
+    tasks.append(scrape(link))
+  authors = await asyncio.gather(*tasks)
+
 
   pp = pprint.PrettyPrinter()
 
-  pp.pprint(links)
+  pp.pprint(authors)
 
 
 asyncio.run(main())
