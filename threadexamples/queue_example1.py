@@ -24,3 +24,17 @@ def consumer():
         except queue.Empty:
             print("Queue is empty, exiting consumer")
             break
+
+
+# Create and start threads
+producer_thread = threading.Thread(target=producer)
+consumer_thread = threading.Thread(target=consumer)
+
+producer_thread.start()
+consumer_thread.start()
+
+producer_thread.join()
+data_queue.join()  # Wait for all tasks to be done
+consumer_thread.join()
+
+print("Both producer and consumer finished")
