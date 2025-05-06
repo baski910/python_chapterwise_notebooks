@@ -105,4 +105,41 @@ async def main():
 
 asyncio.run(main())
 
+# scraping example
+import asyncio
+import aiohttp as aiohttp
+from bs4 import BeautifulSoup
+from urllib.parse import urljoin
+import pprint
+
+
+BASE_URL = 'https://en.wikipedia.org'
+
+
+async def fetch(url):
+  async with aiohttp.ClientSession() as session:
+    async with session.get(url) as resp:
+      return await resp.text()
+
+
+async def crawl():
+  pages = []
+
+  content = await fetch(urljoin(BASE_URL, '/wiki/List_of_programming_languages'))
+  soup = BeautifulSoup(content, 'html.parser')
+  for link in soup.select('div.div-col a'):
+    pages.append(urljoin(BASE_URL, link['href']))
+
+  return pages
+
+
+async def main():
+  links = await crawl()
+
+  pp = pprint.PrettyPrinter()
+
+  pp.pprint(links)
+
+
+asyncio.run(main())
 
