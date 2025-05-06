@@ -83,7 +83,7 @@ asyncio.run(main())
 
 
 # concurrent gather example
-mport asyncio
+import asyncio
 import time
 
 async def factorial(name,number):
