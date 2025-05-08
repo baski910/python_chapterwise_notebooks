@@ -1,0 +1,3 @@
+this file has some lines
+sending lines to server
+another line in the file
