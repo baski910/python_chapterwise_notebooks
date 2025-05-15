@@ -21,6 +21,15 @@
 ########################################################
 import re
 
+s = "this line contains firstname and lastname Bob Smith and so on"
+
+res = re.search(r'.*?(\b[A-Z][a-z]+\s[A-Z][a-z]+\b).*',s)
+
+if res:
+    print(res.group(1))
+else:
+    print("not matched")
+
 fh = open('readme.txt','r')
 
 count = 0
