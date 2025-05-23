@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+    
+    environment {
+        VENV_DIR = '.venv'
+    }
+    stages {
+        stage('checkout scm'){
+            steps {
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/baski910/sparktest_1.git']])
+            }
+        }
+       
+        stage('execute consumer'){
+            steps{
+                 sh '''python3 -m venv $VENV_DIR
+source $VENV_DIR/bin/activate
+pip install pandas kafka-python
+python pd_kafka_example2.py'''
+            }
+           
+        }
+    }
