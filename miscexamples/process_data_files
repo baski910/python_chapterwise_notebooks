@@ -14,32 +14,37 @@ def process_data_files(fobj,aggval,colname,output_file):
                     #data_count += 1
                 elif record['item'] == 'sms':
                     sms_duration += float(record['duration'])
-                    sms_count += 1
-           with(open(output_file,'w')) as oh:
-            oh.write('slno\titem\ttotal\n')
-            oh.write(f'1\tcall\{call_duration}\n')
-            oh.write(f'2\tdata\{data_duration}\n')
-            oh.write(f'3\tsms\{sms_duration}\n')
+                    #sms_count += 1
+            with(open(output_file,'w')) as oh:
+                oh.write('slno\titem\ttotal\n')
+                oh.write(f'1\tcall\t{call_duration}\n')
+                oh.write(f'2\tdata\t{data_duration}\n')
+                oh.write(f'3\tsms\t{sms_duration}\n')
         
-     if colname=='month':
-         months = ['2014-11','2014-12','2015-01','2015-02','2015-03']
-         if aggval == 'total':
-             
-             duration_11 = 0
-             duration_12 = 0
-             duration_01 = 0
-             for record in records:
-                 if record['month'] == months[0]:  # record['month']=='2014-11'
-                     duration_11 += float(record['duration'])
+    if colname=='month':
+        months = ['2014-11','2014-12','2015-01','2015-02','2015-03']
+        if aggval == 'total':
+            duration_11 = 0
+            duration_12 = 0
+            duration_01 = 0
+            for record in records:
+                if record['month'] == months[0]:  
+                    duration_11 += float(record['duration'])
                      #count_11 += 1
-                 elif record['month'] == months[1]:
-                     duration_12 += float(record['duration'])
+                elif record['month'] == months[1]:
+                    duration_12 += float(record['duration'])
                      #count_12 += 1
-                 elif record['month'] == months[2]:
-                     duration_01 += float(record['duration'])
-                     count_01 += 1
+                elif record['month'] == months[2]:
+                    duration_01 += float(record['duration'])
+                    count_01 += 1
             with(open(output_file,'w')) as oh:
                 oh.write('SlNo\tMonth\tTotal')
                 oh.write(f'1\t{months[0]}\t{duration_11}\n')
                 oh.write(f'2\t{months[1]}\t{duration_12}\n')
                 oh.write(f'3\t{months[2]}\t{duration_01}\n')
+
+if __name__ == '__main__':
+    import csv
+    import sys
+    with(open('phone_data.csv','r')) as fh:
+        process_data_files(fh, sys.argv[1],sys.argv[2],sys.argv[3])
