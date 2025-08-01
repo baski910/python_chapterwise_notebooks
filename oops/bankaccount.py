@@ -46,5 +46,5 @@ class BankAccount:
 account1 = BankAccount(12345,'bob',1000)
 account1.showCount()
 account2 = BankAccount(12346,'pat',1200)
-account2.showCount*(
+account2.showCount()
 
