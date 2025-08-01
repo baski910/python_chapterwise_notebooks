@@ -48,3 +48,27 @@ account1.showCount()
 account2 = BankAccount(12346,'pat',1200)
 account2.showCount()
 
+
+# __del__ - called at the time of removing an instance
+class BankAccount:
+    """this is an example class"""
+    def __init__(self,number,name,curbal): # constructor called at the time of creating instance
+        self.number = number
+        self.name = name
+        self.curbal = curbal
+
+    def deposit(self,amount):
+        self.curbal += amount
+    def withdraw(self,amount):
+        self.curbal -= amount
+    def getCurbal(self):
+        return self.curbal 
+    def __del__(self):
+        print("Account destroyed")
+
+
+account1 = BankAccount(12345,'bob',1000)
+account2 = BankAccount(12346,'pat',1200)
+
+del account1,account2
+
