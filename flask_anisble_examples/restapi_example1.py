@@ -25,7 +25,8 @@ def run_playbook_task(job_id, playbook_path, extra_vars):
                 'ansible_become': True,
                 'ansible_become_method': 'sudo',
                 'ansible_become_user': 'student',
-                'ansible_become_pass': 'P@%%w0rd@26'
+                'ansible_become_pass': 'P@%%w0rd@26',
+            },
             json_mode=True
         )
         job_status[job_id]["status"] = r.status
