@@ -1,6 +1,6 @@
 ---
 - name: Install MySQL (MariaDB) on Debian 12
-  hosts: mysql_servers
+  hosts: all
   become: yes
   tasks:
     - name: Update apt package cache
