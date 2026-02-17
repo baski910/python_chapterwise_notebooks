@@ -8,7 +8,7 @@ app = Flask(__name__)
 # In-memory storage for job statuses and outputs (for demonstration)
 job_status = {}
 
-def run_playbook_task(job_id, playbook_path, extra_vars):
+def run_playbook_task(job_id, playbook_path, become_pass,extra_vars):
     """Function to run ansible-runner in a separate thread."""
     try:
         # Define the working directory for ansible-runner
@@ -25,7 +25,7 @@ def run_playbook_task(job_id, playbook_path, extra_vars):
                 'ansible_become': True,
                 'ansible_become_method': 'sudo',
                 'ansible_become_user': 'root',
-                'ansible_become_pass': 'P@%%w0rd@26',
+                'ansible_become_pass': become_pass,
             },
             json_mode=True
         )
@@ -47,6 +47,7 @@ def run_ansible():
     """Endpoint to trigger an Ansible playbook run."""
     data = request.get_json()
     playbook_name = data.get('playbook', 'site.yml')
+    become_pass = data.get('become_pass','')
     extra_vars = data.get('extra_vars', {})
     
     # Generate a unique job ID (in a real app, use a UUID or database ID)
@@ -54,7 +55,7 @@ def run_ansible():
     job_status[job_id] = {"status": "running", "stdout": "", "artifacts": None, "return_code": None}
 
     # Start the ansible-runner in a new thread
-    thread = threading.Thread(target=run_playbook_task, args=(job_id, playbook_name, extra_vars))
+    thread = threading.Thread(target=run_playbook_task, args=(job_id, playbook_name,become_pass, extra_vars))
     thread.start()
 
     return jsonify({"message": "Ansible playbook started", "job_id": job_id}), 202
