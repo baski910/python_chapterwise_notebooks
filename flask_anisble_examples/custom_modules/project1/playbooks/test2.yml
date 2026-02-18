@@ -1,0 +1,12 @@
+---
+- name: Check the uptime
+  hosts: localhost
+  tasks:
+    - name: get the uptime
+      get_uptime:
+        scale: "hour"
+      register: module_output
+    
+    - name: display results
+      debug:
+        var: module_output
