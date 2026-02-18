@@ -1,0 +1,21 @@
+---
+- name: collect metrics module
+  hosts: all
+  vars:
+    venv_path: "/home/student/venv-python3"
+  tasks:
+    - name: install psutil
+      pip:
+        name: psutil
+        state: present
+        virtualenv: "{{ venv_path }}"
+
+    - name: get metrics from target
+      collect_metrics:
+        log_path: "/tmp/metrics.log"
+        #addr: {{ ansible.__default__.__ipv4__}}
+      register: module_output
+    
+    - name: display results
+      debug:
+        var: module_output
