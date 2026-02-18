@@ -1,0 +1,19 @@
+---
+- name: collect metrics module
+  hosts: localhost
+  vars:
+    venv_path: "/home/student/venv-python3"
+  tasks:
+    - name: install psutil
+      pip:
+        name: psutil
+        state: present
+        virtualenv: "{{ venv_path }}"
+
+    - name: get metrics from target
+      collect_metrics:
+      register: module_output
+    
+    - name: display results
+      debug:
+        var: module_output
