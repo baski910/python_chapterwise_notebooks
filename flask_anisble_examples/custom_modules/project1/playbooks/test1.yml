@@ -1,0 +1,14 @@
+---
+- name: Test the custom module
+  hosts: localhost
+  gather_facts: False
+  tasks:
+    - name: using the module
+      custom_module:
+        name: "bob"
+        new: True
+      register: module_output
+
+    - name: display results
+      debug:
+        var: module_output
