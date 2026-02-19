@@ -1,0 +1,2 @@
+my-host1 ansible_host=172.20.0.126 ansible_user=ubunut-1 ansible_password=P@%%w0rd@26 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+my-host2 ansible_host=172.20.0.129 ansible_user=ubunut-1 ansible_password=P@%%w0rd@26 ansible_ssh_common_args='-o StrictHostKeyChecking=no'  
