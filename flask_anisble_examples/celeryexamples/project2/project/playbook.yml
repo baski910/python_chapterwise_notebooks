@@ -1,0 +1,7 @@
+---
+- name: Example playbook
+  hosts: all
+  tasks:
+    - name: Debug output
+      debug:
+        msg: "the code runs"
