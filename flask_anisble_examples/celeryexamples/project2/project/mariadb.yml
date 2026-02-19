@@ -1,0 +1,22 @@
+---
+- name: Install MySQL (MariaDB) on Debian 12
+  hosts: mysql_servers
+  become: yes
+  tasks:
+    - name: Update apt package cache
+      ansible.builtin.apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install MariaDB server and client
+      ansible.builtin.apt:
+        name:
+          - mariadb-server
+          - mariadb-client
+        state: present
+
+    - name: Ensure MySQL service is running and enabled
+      ansible.builtin.service:
+        name: mysql
+        state: started
+        enabled: yes
