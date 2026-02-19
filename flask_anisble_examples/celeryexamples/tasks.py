@@ -7,5 +7,6 @@ celery_app = Celery('tasks', broker='redis://localhost:6379/0',backend='redis://
 @celery_app.task(ignore_result=False)
 def run_ansible_playbook(playbook_path, inventory_path):
     # Run ansible-runner
-    r = ansible_runner.run(private_data_dir='./project1', playbook=playbook_path, inventory=inventory_path)
-    return {"status": r.status, "rc": r.rc}
+    inv_path = os.path.join(os.getcwd(),f"project2/inventory/{inventory_path}")
+    r = ansible_runner.run(private_data_dir='./project2', playbook=playbook_path, inventory=inv_path)
+    return {"status": r.status,"stats":r.stats, "rc": r.rc}
