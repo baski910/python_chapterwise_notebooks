@@ -1,0 +1,23 @@
+---
+- name: Running  job template using uri module
+  hosts: localhost
+  vars:
+    api_token: "prAxIhOrgNY6zr9XHP5efVyndpnc9J"
+  tasks:
+  - name: Call API with auth token and content type
+    uri:
+      url: "http://172.232.123.122:8080/api/v2/job_templates/jt-test-1/launch"
+      method: POST
+      body_format: json
+      body: '{"extra_vars": {},"limit":"172.235.28.243"}'
+      headers:
+        Content-Type: "application/json"
+        Authorization: "Bearer {{ api_token }}"
+      status_code: 201
+      return_content: true
+      validate_certs: false # Use 'true' in a secure production environment
+    register: api_response
+
+  - name: show the result
+    debug:
+      var: api_response 
