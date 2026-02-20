@@ -1,0 +1,1 @@
+curl -X POST --user "developer:P@%%w0rd@26" -H 'Content-Type:application/json' -d '{"extra_vars": {},"limit":"172.235.28.243"}' http://172.232.123.122:8080/api/v2/job_templates/jt-test-1/launch
