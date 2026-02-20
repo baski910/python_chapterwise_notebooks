@@ -1,0 +1,14 @@
+---
+- name: Ansible URI module examples
+  hosts: localhost
+  tasks:
+  - name: Check the outbound IP address
+    uri:
+      url: https://checkip.amazonaws.com
+      return_content: true
+    register: result
+  - name: Creating a new variable to store this IP
+    set_fact:
+      publicip: "{{ result.content | trim() }}"
+  - debug:
+      var: publicip
