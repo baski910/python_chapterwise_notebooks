@@ -9,6 +9,7 @@ chmod +x kubectl<br>
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl<br>
 
 
+
 # install helm
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4<br>
 chmod 700 get_helm.sh<br>
@@ -16,4 +17,8 @@ chmod 700 get_helm.sh<br>
 
 # install awx-operator
 curl -sSL https://raw.githubusercontent.com/josephaw1022/AwxKindQuickStart/main/quick-start.sh | bash
+
+# port forward node port 
+kubectl port-forward svc/awx-demo-server -n awx 8080:30000
+
 
