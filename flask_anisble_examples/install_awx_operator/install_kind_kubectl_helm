@@ -1,0 +1,18 @@
+curl -L "https://kind.sigs.k8s.io/dl/${version}/kind-$(uname)-amd64" -o /usr/local/bin/kind<br>
+chmod +x /usr/local/bin/kind<br>
+
+# install kubectl
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+<br>
+chmod +x kubectl<br>
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl<br>
+
+
+# install helm
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4<br>
+chmod 700 get_helm.sh<br>
+./get_helm.sh<br>
+
+# install awx-operator
+curl -sSL https://raw.githubusercontent.com/josephaw1022/AwxKindQuickStart/main/quick-start.sh | bash
+
